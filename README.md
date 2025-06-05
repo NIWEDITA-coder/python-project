@@ -1,43 +1,45 @@
-#Visualstudio code -Online Payment Fraud Detection System
-This is a machine learning-based web application built using **Flask** that predicts whether an online payment transaction is **fraudulent or genuine**.
+**Online-Payments-Fraud-Detection-with-Machine-Learning**
 
-## 🔍 Project Objective
+Online payment frauds can happen with anyone using any payment system, especially while making payments using a credit card. That is why detecting online payment fraud is very important for credit card companies to ensure that the customers are not getting charged for the products and services they never paid.The online payment method leads to fraud that can happen using any payment app. That is why Online Payment Fraud Detection is very important.
 
-To detect fraudulent online payment transactions in real-time using a trained machine learning model.
+To identify online payment fraud with machine learning, we need to train a machine learning model for classifying fraudulent and non-fraudulent payments. For this, we need a dataset containing information about online payment fraud, so that we can understand what type of transactions lead to fraud. For this task, I collected a dataset from Kaggle, which contains historical information about fraudulent transactions which can be used to detect fraud in online payments. Below are all the columns from the dataset I’m using here:
 
-## 🚀 Technologies Used
+step : represents a unit of time where 1 step equals 1 hour
+type : type of online transaction
+amount : the amount of the transaction
+nameOrig : customer starting the transaction
+oldbalanceOrg : balance before the transaction
+newbalanceOrig : balance after the transaction
+nameDest : recipient of the transaction
+oldbalanceDest : initial balance of recipient before the transaction
+newbalanceDest : the new balance of recipient after the transaction
+isFraud : fraud transaction
 
-- Python
-- Flask (for web framework)
-- HTML,Css,Javascript (for frontend form)
-- scikit-learn (for model building)
-- Pickle (for saving/loading model)
-- NumPy
-- TensorFlow/Keras (optional dependency)
+**Online Payments Fraud Detection using Python**
 
-## 🛠️ Features
+import pandas as pd   
+import numpy as np   
 
-- Takes transaction details as input (type, amount, balances)
-- Predicts whether the transaction is fraud or not
-- Web interface made using HTML and Flask
-## 📁 Files
+import matplotlib.pyplot as plt   
+import seaborn as sns   
+data = pd.read_csv('fraud.csv')
+data.head()
+![image](https://github.com/user-attachments/assets/63ab863d-b851-4340-a834-be59c84cc947)
+# Load the trained model
+model =pickle.load(open("static/model.pkl", "rb"))
+ # Get input values from the form
+        txn_type = request.form['txn_type']
+        amount = float(request.form['amount'])
+        oldbalanceOrg = float(request.form['oldbalanceOrg'])
+        newbalanceOrig = float(request.form['newbalanceOrig'])
+**Files:-**
+`app.py` – Flask application
+`model.pkl` – Trained ML model
+`index.html` – Frontend UI
+`main.ipynb` – Notebook used for training and testing
+`README.md` – Project documentation
 
-- `app.py` – Flask application
-- `model.pkl` – Trained ML model
-- `index.html` – Frontend UI
-- `main.ipynb` – Notebook used for training and testing
-- `README.md` – Project documentation
-
-## 🧪 How to Use
-
-1. Clone the repository:
-   
-git clone https://github.com/your-username/your-repo-name.git
-   
-Install dependencies:
-pip install -r requirements.txt
-
-Run the application:
+**Run the application:**
 python app.py
 
 Open browser and go to:
@@ -45,8 +47,6 @@ http://127.0.0.1:5000
 Press CTRL+C to quit
 
 
-👩‍💻 Developed By
- Project by [Niwedita Pandey].
 
 
 
